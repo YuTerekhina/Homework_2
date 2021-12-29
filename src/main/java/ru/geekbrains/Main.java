@@ -1,12 +1,26 @@
 package ru.geekbrains;
 
+import java.util.Random;
+
 public class Main {
     public static void main(String[] args) {
-        Human human1 = new Human("Василий");
-        Robot robot1 = new Robot("Bob");
-        Cat cat1 = new Cat("Барсик");
-        human1.run();
-        robot1.jump();
-        cat1.jump();
+        AboutPerson [] person = {
+            new Human("Василий"),
+            new Robot("Bob"),
+            new Cat("Мурзик"),
+            new Robot("Stefan"),
+            new Cat("Барсик")
+        };
+        Actions [] track = {
+            new Run_Track(new Random().nextInt(1100)),
+            new Jump_Track(new Random().nextInt(10))
+        };
+        for (AboutPerson p : person){
+            for (Actions t : track){
+                if(!t.check(p)){
+                    break;
+                }
+            }
+        }
     }
 }
